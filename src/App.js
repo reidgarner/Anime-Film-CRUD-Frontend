@@ -17,12 +17,13 @@ class App extends Component {
       director: '',
       year: '',
       rating: '',
-      poster_url: ''
+      poster_url: '',
+      movie_selected: '',
     }
   }
   
   componentDidMount(){
-    fetch('https://anime-movie-database.herokuapp.com/movies')
+    fetch(`https://anime-movie-database.herokuapp.com/movies`)
     .then((response) => response.json())
     .then(movies => {this.setState(movies)})
   }
@@ -44,8 +45,7 @@ class App extends Component {
       your_rating: formData.get('Rating'),
       poster_url: formData.get('Poster_url')
     }
-    console.log(newMovie)
-    return fetch("https://anime-movie-database.herokuapp.com/movies", {
+    return fetch(`https://anime-movie-database.herokuapp.com/movies`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -60,8 +60,33 @@ class App extends Component {
     })
   }
 
+  onEditMovie = (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.target);
+    let editedMovie = {
+      title: formData.get('Title'),
+      director: formData.get('Director'),
+      year: formData.get('Release_Year'),
+      your_rating: formData.get('Rating'),
+      poster_url: formData.get('Poster_url')
+    }
+    console.log(editedMovie)
+    return fetch(`https://anime-movie-database.herokuapp.com/movies/1`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedMovie)
+    })
+    .then(response => response.json())
+    .then(movies => {
+      this.setState({
+        movies: [...this.state.movies, movies[0]]
+      })
+    })
+  }
+
   deleteMovie = (event) => {
-    console.log(typeof event.target.id)
     fetch(`https://anime-movie-database.herokuapp.com/movies/${Number(event.target.id)}`, {
       method: "DELETE",
     })
@@ -82,7 +107,7 @@ class App extends Component {
             <Navbar />
             <Route path="/AddMovie" render ={() => (<AddMovie onSubmitMovie={this.onSubmitMovie}/>)} />
             {this.state.movies ? <Route exact path="/" render={() => <MovieList movies={ this.state.movies } deleteMovie={this.deleteMovie}/>}/> : null}
-            {this.state.movies ? <Route path="/EditMovie/:id" render={({match}) => <EditMovie movie={ this.state.movies } match={match}/>}/> : null}
+            {this.state.movies ? <Route path="/EditMovie/:id" render={({match}) => <EditMovie movie={this.state.movies} onEditMovie={this.onEditMovie} match={match}/>}/> : null}
             <Footer />
           </header>
         </div>

@@ -2,19 +2,21 @@ body {
     background-image: url('https://static.zerochan.net/Sword.Art.Online.full.1915599.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .card {
+    height: auto;
     width: 18rem;
     margin: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .movie-cards {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: row; 
     margin-top: 3%;
     flex-wrap: wrap;
+    justify-content: center
 }
 
 .add-movie {
@@ -23,11 +25,18 @@ body {
     margin: auto;
 }
 
+.edit-movie {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
 .buttons {
     text-align: center;
     vertical-align: middle;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 3%;
 }
 
 .movie-cont {
@@ -66,4 +75,8 @@ body {
 .button-container {
     display: flex;
     flex-direction: column;
+}
+
+.return-button {
+    width: 100%;
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const AddMovie = (props) => {
-    console.log(props)
     return (
         <div>
             <form className="add-movie col-md-3" onSubmit={props.onSubmitMovie}>
@@ -11,9 +10,9 @@ const AddMovie = (props) => {
                 <input type="text" name="Release_Year" placeholder="Release Year"/>
                 <input type="text" name="Rating" placeholder="Rating out of 10"/>
                 <input type="url" name="Poster_url" placeholder="Poster URL"/>
-                <input value="submit" type="submit"/>
+                <input value="Submit" type="submit"/>
                 <Link to='/'>
-                    <button type="button" value="Add Movie">Submit</button>
+                    <button className="return-button" type="button" value="Return to Movie List">Return to Movie List</button>
                 </Link>
             </form>
         </div>

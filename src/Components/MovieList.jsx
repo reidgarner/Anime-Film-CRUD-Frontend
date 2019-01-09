@@ -1,13 +1,11 @@
 import React from 'react'
 import MovieWedit from './MovieWedit'
 import { Link } from 'react-router-dom'
-import { Route, BrowserRouter as Router } from 'react-router-dom'
-import AddMovie from './AddMovie'
 
 const MovieList = (props) => {
     return (
         <div className="movie-cont">
-            <Link className="btn btn-secondary add-movie-main" to="/AddMovie" submitNewMovie={props.submitNewMovie}>Add Movie</Link>
+            <Link className="btn btn-secondary add-movie-main" to="/AddMovie" submitnewmovie={props.submitNewMovie}>Add Movie</Link>
             <div className="movie-cards">
             {props.movies.map(movie => <MovieWedit movie={movie} key={'movie'+movie.id} deleteMovie={props.deleteMovie}></MovieWedit>) }
             </div>

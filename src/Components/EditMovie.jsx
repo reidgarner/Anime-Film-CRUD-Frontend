@@ -10,12 +10,12 @@ const EditMovie = (props) => {
             <div className="movie-card-1">
             <Movie movie={movieToRender}></Movie>
             </div>
-            <form className="add-movie col-md-3">
-                <input type="text" name="Title" placeholder="Title"/>
-                <input type="text" name="Director" placeholder="Director"/>
-                <input type="text" name="Release Year" placeholder="Release Year"/>
-                <input type="text" name="Rating" placeholder="Rating out of 10"/>
-                <input className="poster" type="url" name="Poster_url" placeholder="Poster URL"/>
+            <form className="add-movie col-md-3" onSubmit={props.onEditMovie}>
+                <input type="text" name="Title" defaultValue={movieToRender.title}/>
+                <input type="text" name="Director" defaultValue={movieToRender.director}/>
+                <input type="text" name="Release_Year" defaultValue={movieToRender.year}/>
+                <input type="text" name="Rating" defaultValue={movieToRender.your_rating}/>
+                <input className="poster col-sm-12" type="url" name="Poster_url" defaultValue={movieToRender.poster_url}/>
                 <input type="submit" value="Edit Movie" />
             </form>
         </div>
