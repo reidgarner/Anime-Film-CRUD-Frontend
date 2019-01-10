@@ -64,6 +64,7 @@ class App extends Component {
     event.preventDefault()
     const formData = new FormData(event.target);
     let editedMovie = {
+      id: formData.get('id'),
       title: formData.get('Title'),
       director: formData.get('Director'),
       year: formData.get('Release_Year'),
@@ -71,7 +72,7 @@ class App extends Component {
       poster_url: formData.get('Poster_url')
     }
     console.log(editedMovie)
-    return fetch(`https://anime-movie-database.herokuapp.com/movies/1`, {
+    return fetch(`https://anime-movie-database.herokuapp.com/movies/${editedMovie.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

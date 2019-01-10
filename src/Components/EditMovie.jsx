@@ -11,6 +11,7 @@ const EditMovie = (props) => {
             <Movie movie={movieToRender}></Movie>
             </div>
             <form className="add-movie col-md-3" onSubmit={props.onEditMovie}>
+                <input type="hidden" name="id" defaultValue={movieToRender.id}/>
                 <input type="text" name="Title" defaultValue={movieToRender.title}/>
                 <input type="text" name="Director" defaultValue={movieToRender.director}/>
                 <input type="text" name="Release_Year" defaultValue={movieToRender.year}/>
