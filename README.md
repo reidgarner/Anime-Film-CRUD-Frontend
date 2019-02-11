@@ -36,6 +36,6 @@ Allows the user to view a list of anime films while also having the ability to a
 - Deployed Front-End Site: https://anime-movie-site.firebaseapp.com
 - Deployed Back-End Site: https://anime-movie-database.herokuapp.com/movies
 
-### Installation steps:
-- npm install 
-- ng serve --open 
+### Installation and Run:
+- npm install
+- npm start
