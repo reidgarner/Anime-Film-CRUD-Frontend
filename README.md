@@ -5,13 +5,15 @@ Allows the user to view a list of anime films while also having the ability to a
 
 ## Project Images: 
 
+### Home Page
+
 ![Home](src/assets/HomePage.png)
 
-###
+### Edit Film
 
 ![Edit Film](src/assets/EditFilm.png)
 
-###
+### Add Film
 
 ![Add Film](src/assets/AddFilm.png)
 
