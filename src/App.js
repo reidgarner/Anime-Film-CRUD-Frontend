@@ -71,7 +71,6 @@ class App extends Component {
       your_rating: formData.get('Rating'),
       poster_url: formData.get('Poster_url')
     }
-    console.log(editedMovie)
     return fetch(`https://anime-movie-database.herokuapp.com/movies/${editedMovie.id}`, {
       method: "PUT",
       headers: {
@@ -79,10 +78,15 @@ class App extends Component {
       },
       body: JSON.stringify(editedMovie)
     })
-    .then(response => response.json())
-    .then(movies => {
-      this.setState({
-        movies: [...this.state.movies, movies[0]]
+    .then (response => response.json())
+    .then (response => {
+      let movies = this.state.movies.filter(movie => {
+        return movie.id !== Number(response[0].id)
+      })
+      movies.push(response[0])
+      movies.sort((a,b) => a.id - b.id)
+      return this.setState({
+        movies: movies
       })
     })
   }
