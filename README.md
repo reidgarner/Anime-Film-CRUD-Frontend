@@ -37,5 +37,5 @@ Allows the user to view a list of anime films while also having the ability to a
 - Deployed Back-End Site: https://anime-movie-database.herokuapp.com/movies
 
 ### Installation and Run:
-- npm install
-- npm start
+- $ npm install
+- $ npm start
